@@ -1,24 +1,6 @@
 <?php
-/* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4 foldmethod=marker: */
-// +----------------------------------------------------------------------+
-// | PHP version 4                                                        |
-// +----------------------------------------------------------------------+
-// | Copyright (c) 1997-2004 The PHP Group                                |
-// +----------------------------------------------------------------------+
-// | This source file is subject to version 3.0 of the PHP license,       |
-// | that is bundled with this package in the file LICENSE, and is        |
-// | available through the world-wide-web at the following url:           |
-// | http://www.php.net/license/3_0.txt.                                  |
-// | If you did not receive a copy of the PHP license and are unable to   |
-// | obtain it through the world-wide-web, please send a note to          |
-// | license@php.net so we can mail you a copy immediately.               |
-// +----------------------------------------------------------------------+
-// | Authors: Cipriano Groenendal <cipri@php.net>                         |
-// +----------------------------------------------------------------------+
-//
-// $Id$
-//
 
+/* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
 /**
  * The File_DNS class is editor for RFC1033 style zonefiles.
@@ -26,14 +8,21 @@
  * The File::DNS class provides an OO interface
  * to read, write, edit and create DNS Zones.
  *
- * @category File
- * @package  File_DNS
- * @author   Cipriano Groenendal <cipri@php.net>
- * @version  CVS rev: $Id$ (Package version: @version@)
- * @license  http://www.php.net/license/3_0.txt PHP License 3.0
- * @link     http://www.rfc-editor.org/rfc/rfc1033.txt
- * @link     http://www.rfc-editor.org/rfc/rfc1537.txt
- * @link     http://www.rfc-editor.org/rfc/rfc2308.txt
+ * PHP versions 4 and 5
+ *
+ * LICENSE: This source file is subject to version 3.0 of the PHP license
+ * that is available through the world-wide-web at the following URI:
+ * http://www.php.net/license/3_0.txt.  If you did not receive a copy of
+ * the PHP License and are unable to obtain it through the web, please
+ * send a note to license@php.net so we can mail you a copy immediately.
+ *
+ * @category   File
+ * @package    File_DNS
+ * @author     Cipriano Groenendal <cipri@php.net>
+ * @copyright  2004-2005 Cipriano Groenendal <cipri@php.net>
+ * @license    http://www.php.net/license/3_0.txt PHP License 3.0
+ * @version    CVS: $Id$
+ * @link       http://pear.php.net/package/File_DNS
  */
 
 // {{{ requires
@@ -107,17 +96,22 @@ define('FILE_DNS_UPDATE_SOA_FAILED',    -9);
 /**
  * an RFC1033 style zonefile editor
  *
- * The File::DNS class provides an OO interface
- * to read, write, edit and create DNS Zones.
+ * The File::DNS class provides an Object Oriented
+ * interface to read, edit and create DNS Zonefiles.
  *
- * @category    File
- * @package     File_DNS
- * @author      Cipriano Groenendal <cipri@php.net>
- * @version     @version@ (CVS rev: $Id$)
- * @access      public
- * @todo        Add addRecord, delRecord functions for basic editing.
- * @todo        Add create() function to start from scratch.
- * @todo        Fix examples
+ * @category   File
+ * @package    File_DNS
+ * @author     Cipriano Groenendal <cipri@php.net>
+ * @copyright  2004-2005 Cipriano Groenendal <cipri@php.net>
+ * @license    http://www.php.net/license/3_0.txt PHP License 3.0
+ * @version    Release: @version@
+ * @link       http://pear.php.net/package/File_DNS
+ * @link       http://www.rfc-editor.org/rfc/rfc1033.txt
+ * @link       http://www.rfc-editor.org/rfc/rfc1537.txt
+ * @link       http://www.rfc-editor.org/rfc/rfc2308.txt
+ * @todo       Add addRecord, delRecord functions for basic editing.
+ * @todo       Add create() function to start from scratch.
+ * @todo       Fix examples
  */
 class File_DNS
 {
