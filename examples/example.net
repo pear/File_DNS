@@ -1,0 +1,36 @@
+$TTL 3600
+@	4D	IN	SOA	ns1.example.net. hostmaster.example.net. (
+				204041514	; serial
+				4H		; refresh (RFC1537)
+				30M		; retry (RFC1537)
+				1D		; expiry (RFC1537)
+				3H )		; minimum  (RFC1537)
+
+			NS	ns1.example.net.
+			NS	ns2.example.net.
+			MX	10	mx.example.net.
+			MX	20	relay.example.net.
+
+localhost		A	127.0.0.1
+
+@		IN	A	10.0.0.1
+ftp	1H		CNAME	www
+www			A	10.1.0.1
+www			A	10.2.0.1
+fast	10S		CNAME	www
+slow	12W		CNAME	www
+
+$ORIGIN sub1.example.net.
+@			A	10.1.0.1
+
+$ORIGIN sub1
+@			A	10.1.1.1
+
+$ORIGIN sub2.sub1.example.net.
+@			A	10.1.2.1
+
+$ORIGIN sub2.example.net.
+@			A	10.2.0.1
+
+$ORIGIN sub1
+@			A	10.2.1.1
