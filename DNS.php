@@ -498,7 +498,7 @@ class File_DNS
                     break 2;
 
                 case 'TXT':
-                    $record['data'] .= ' ' . $item; 
+                    $record['data'] .= ' ' . $item;
                     break;
 
                 default:
@@ -668,7 +668,7 @@ class File_DNS
             case 'NS':
             case 'CNAME':
             case 'PTR':
-            case 'TXT'
+            case 'TXT':
             default:
                 $zone[] = implode("\t", $record);
                 break;
@@ -715,17 +715,17 @@ class File_DNS
             if ($migrate) {
                 $search = '/^(.*)(' . preg_quote($oldDomain) . ')(\.)$/';
                 $replace = '$1' . $domain . '$3';
-                $this->_SOA['name']   = preg_replace($search, $replace, 
+                $this->_SOA['name']   = preg_replace($search, $replace,
                                                      $this->_SOA['name']  );
-                $this->_SOA['origin'] = preg_replace($search, $replace, 
+                $this->_SOA['origin'] = preg_replace($search, $replace,
                                                      $this->_SOA['origin']);
-                $this->_SOA['person'] = preg_replace($search, $replace, 
+                $this->_SOA['person'] = preg_replace($search, $replace,
                                                      $this->_SOA['person']);
                 foreach ($this->_records as $key => $record) {
-                    $this->_records[$key]['name'] = 
-                                              preg_replace($search, $replace, 
+                    $this->_records[$key]['name'] =
+                                              preg_replace($search, $replace,
                                               $this->_records[$key]['name']);
-                    $this->_records[$key]['data'] = 
+                    $this->_records[$key]['data'] =
                                               preg_replace($search, $replace,
                                               $this->_records[$key]['data']);
                 }
@@ -769,13 +769,13 @@ class File_DNS
             return PEAR::raiseError('Unable to set SOA value.',
                                     FILE_DNS_UPDATE_SOA_FAILED);
         }
-        $validKeys = array('name', 'ttl', 'class', 'origin', 'person', 
+        $validKeys = array('name', 'ttl', 'class', 'origin', 'person',
                            'serial', 'refresh', 'retry', 'expire', 'minimum');
         foreach ($values as $key => $value) {
             if (array_search($key, $validKeys) === false) {
                 return PEAR::raiseError('Unable to set SOA value.' .
                                         $key . ' not recognized',
-                                        FILE_DNS_UPDATE_SOA_FAILED, 
+                                        FILE_DNS_UPDATE_SOA_FAILED,
                                         NULL, NULL, $key);
             }
 
@@ -841,7 +841,7 @@ class File_DNS
             if (
                 (
                  (NULL == $name)
-                 || 
+                 ||
                  (0 == strcasecmp($name, $record['name']) )
                  ||
                  (0 == strcasecmp("$name.{$this->_domain}.", $record['name']) )
@@ -849,7 +849,7 @@ class File_DNS
                 &&
                 (
                  (NULL == $type)
-                 || 
+                 ||
                  (0 == strcasecmp($type, $record['type']) )
                 )
                 &&
@@ -871,7 +871,7 @@ class File_DNS
     /**
      * sets the name of a specific, or not so specific, record.
      *
-     * @param string  $new  The new name for this record. If needed, the 
+     * @param string  $new  The new name for this record. If needed, the
      *                      current domainname will be automaticly appended.
      * @param string  $name The name of the record to edit. (NULL for all)
      * @param string  $type The type of the record to edit. (NULL for all)
@@ -895,7 +895,7 @@ class File_DNS
             if (
                 (
                  (NULL == $name)
-                 || 
+                 ||
                  (0 == strcasecmp($name, $record['name']))
                  ||
                  (0 == strcasecmp("$name.{$this->_domain}.", $record['name']))
