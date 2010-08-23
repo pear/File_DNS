@@ -14,7 +14,7 @@
   </maintainers>
   <release>
     <version>0.0.9</version>
-    <date>2004-10-3</date>
+    <date>2004-10-03</date>
     <license>PHP License</license>
     <state>devel</state>
     <notes>Initial PEAR release.</notes>
@@ -28,6 +28,7 @@
       </file>
       <file role="doc" baseinstalldir="File_DNS" name="examples/example.net" />
       <file role="doc" baseinstalldir="File_DNS" name="examples/example.php" />
+      <file role="test" name="tests/isip.phpt" />
     </filelist>
   </release>
   <changelog>

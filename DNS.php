@@ -1153,7 +1153,10 @@ class File_DNS
      */
     function isIP($value)
     {
-        return (bool) ereg('([0-9]\.){4}', $value . '.');
+		// http://www.regular-expressions.info/regexbuddy/ipaccurate.html
+		$ipaccurate = '/\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}'.
+			'(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b/';
+        return preg_match($ipaccurate, $value);
     }
 
     // }}}
