@@ -1,85 +1,195 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
-<!DOCTYPE package SYSTEM "http://pear.php.net/dtd/package-1.0">
-<package version="1.0">
-  <name>File_DNS</name>
-  <summary>Manipulate RFC1033-style DNS Zonefiles</summary>
-  <description>The File_DNS class provides a way to read, edit and write RFC1033 style DNS Zones.</description>
-  <maintainers>
-    <maintainer>
-      <user>cipri</user>
-      <name>Cipriano Groenendal</name>
-      <email>cipri@php.net</email>
-      <role>lead</role>
-    </maintainer>
-  </maintainers>
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>File_DNS</name>
+ <channel>pear.php.net</channel>
+ <summary>Manipulate RFC1033-style DNS Zonefiles</summary>
+ <description>The File_DNS class provides a way to read, edit and write RFC1033 style DNS Zones.</description>
+ <lead>
+  <name>Cipriano Groenendal</name>
+  <user>cipri</user>
+  <email>cipri@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2010-10-05</date>
+ <time>03:23:19</time>
+ <version>
+  <release>0.0.9</release>
+  <api>0.0.9</api>
+ </version>
+ <stability>
+  <release>devel</release>
+  <api>devel</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP License</license>
+ <notes>
+QA release
+package 2.0
+Bug #17792 	Patch: Regex bug in isIp
+ </notes>
+ <contents>
+  <dir baseinstalldir="/" name="/">
+   <file baseinstalldir="File_DNS" md5sum="fcbfab64ec2512cccb105b027621c2c5" name="examples/example.net" role="doc" />
+   <file baseinstalldir="File_DNS" md5sum="16de2d7d78182b2c526dd3cb0add6e31" name="examples/example.php" role="doc" />
+   <file baseinstalldir="/" md5sum="52ffc37441b0f9f3c92ca3f918ed01d2" name="File/DNS.php" role="php" />
+   <file baseinstalldir="/" md5sum="eeb01b9909c12aa8130f9791beed9a51" name="tests/isip.phpt" role="test" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>4.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+   <package>
+    <name>File</name>
+    <channel>pear.php.net</channel>
+   </package>
+   <package>
+    <name>PEAR</name>
+    <channel>pear.php.net</channel>
+   </package>
+  </required>
+ </dependencies>
+ <phprelease />
+ <changelog>
   <release>
-    <version>0.0.9</version>
-    <date>2004-10-03</date>
-    <license>PHP License</license>
-    <state>devel</state>
-    <notes>Initial PEAR release.</notes>
-     <deps>
-      <dep type="pkg" rel="has" optional="no">File</dep>
-      <dep type="pkg" rel="has" optional="no">PEAR</dep>
-    </deps>
-    <filelist>
-      <file role="php" baseinstalldir="File" name="DNS.php">
-        <replace from="@version@" to="version" type="package-info"/>
-      </file>
-      <file role="doc" baseinstalldir="File_DNS" name="examples/example.net" />
-      <file role="doc" baseinstalldir="File_DNS" name="examples/example.php" />
-      <file role="test" name="tests/isip.phpt" />
-    </filelist>
+   <version>
+    <release>0.0.1</release>
+    <api>0.0.1</api>
+   </version>
+   <stability>
+    <release>devel</release>
+    <api>devel</api>
+   </stability>
+   <date>2004-04-17</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Testing package.xml. Read-only support for now.
+   </notes>
   </release>
-  <changelog>
-    <release>
-    <version>0.0.8</version>
-    <date>2004-07-01</date>
-    <license>PHP License</license>
-    <state>devel</state>
-    <notes>Initial PEAR release.</notes>
-    </release>
-    <release>
-      <version>0.0.7</version>
-      <date>2004-06-12</date>
-      <state>devel</state>
-      <notes>Fixed tiny CS issues. Fixed some bugs where PEAR::Error's were raised but not returned.</notes>
-    </release>
-    <release>
-      <version>0.0.6</version>
-      <date>2004-06-11</date>
-      <state>devel</state>
-      <notes>Fixed up docbooks and other misc CS errors. Added examples</notes>
-    </release>
-    <release>
-      <version>0.0.5</version>
-      <date>2004-06-06</date>
-      <state>devel</state>
-      <notes>Added MXPref method. Fixed docblooks and other misc coding style errors.</notes>
-    </release>
-    <release>
-      <version>0.0.4</version>
-      <date>2004-06-05</date>
-      <state>devel</state>
-      <notes>Added editing methods.</notes>
-    </release>
-    <release>
-      <version>0.0.3</version>
-      <date>2004-04-30</date>
-      <state>devel</state>
-      <notes>Added saving to file. Automatic serials. SOA altering functions.</notes>
-    </release>
-    <release>
-      <version>0.0.2</version>
-      <date>2004-04-18</date>
-      <state>devel</state>
-      <notes>Fixed version tag. Added basic toString() renderer.</notes>
-    </release>
-    <release>
-      <version>0.0.1</version>
-      <date>2004-04-17</date>
-      <state>devel</state>
-      <notes>Testing package.xml. Read-only support for now.</notes>
-    </release>
-  </changelog>
+  <release>
+   <version>
+    <release>0.0.2</release>
+    <api>0.0.2</api>
+   </version>
+   <stability>
+    <release>devel</release>
+    <api>devel</api>
+   </stability>
+   <date>2004-04-18</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Fixed version tag. Added basic toString() renderer.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.0.3</release>
+    <api>0.0.3</api>
+   </version>
+   <stability>
+    <release>devel</release>
+    <api>devel</api>
+   </stability>
+   <date>2004-04-30</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Added saving to file. Automatic serials. SOA altering functions.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.0.4</release>
+    <api>0.0.4</api>
+   </version>
+   <stability>
+    <release>devel</release>
+    <api>devel</api>
+   </stability>
+   <date>2004-06-05</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Added editing methods.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.0.5</release>
+    <api>0.0.5</api>
+   </version>
+   <stability>
+    <release>devel</release>
+    <api>devel</api>
+   </stability>
+   <date>2004-06-06</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Added MXPref method. Fixed docblooks and other misc coding style errors.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.0.6</release>
+    <api>0.0.6</api>
+   </version>
+   <stability>
+    <release>devel</release>
+    <api>devel</api>
+   </stability>
+   <date>2004-06-11</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Fixed up docbooks and other misc CS errors. Added examples
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.0.7</release>
+    <api>0.0.7</api>
+   </version>
+   <stability>
+    <release>devel</release>
+    <api>devel</api>
+   </stability>
+   <date>2004-06-12</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Fixed tiny CS issues. Fixed some bugs where PEAR::Error&apos;s were raised but not returned.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.0.8</release>
+    <api>0.0.8</api>
+   </version>
+   <stability>
+    <release>devel</release>
+    <api>devel</api>
+   </stability>
+   <date>2004-07-01</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Initial PEAR release.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.0.9</release>
+    <api>0.0.9</api>
+   </version>
+   <stability>
+    <release>devel</release>
+    <api>devel</api>
+   </stability>
+   <date>2010-10-05</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+QA release
+package 2.0
+Bug #17792 	Patch: Regex bug in isIp
+   </notes>
+  </release>
+ </changelog>
 </package>

@@ -2,10 +2,7 @@
 File_DNS::isIP() tests
 --FILE--
 <?php
-set_include_path(
-    realpath(dirname(dirname(__FILE__))) . PATH_SEPARATOR . get_include_path()
-);
-require_once 'DNS.php';
+require_once 'File/DNS.php';
 
 $dns = new File_DNS;
 
