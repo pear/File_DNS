@@ -10,11 +10,11 @@
   <email>cipri@php.net</email>
   <active>yes</active>
  </lead>
- <date>2010-10-05</date>
- <time>03:23:19</time>
+ <date>2011-01-10</date>
+ <time>23:23:04</time>
  <version>
-  <release>0.1.0</release>
-  <api>0.1.0</api>
+  <release>0.1.1</release>
+  <api>0.1.1</api>
  </version>
  <stability>
   <release>devel</release>
@@ -22,9 +22,7 @@
  </stability>
  <license uri="http://www.php.net/license">PHP License</license>
  <notes>
-QA release
-package 2.0
-Bug #17792 	Patch: Regex bug in isIp
+   Updated code for PHP 5, fixed a few bugs. Added getter/setter methods for records and support for SRV and $GENERATE.
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -37,7 +35,7 @@ Bug #17792 	Patch: Regex bug in isIp
  <dependencies>
   <required>
    <php>
-    <min>4.0.0</min>
+    <min>5.3.0</min>
    </php>
    <pearinstaller>
     <min>1.4.0b1</min>
@@ -189,6 +187,21 @@ Initial PEAR release.
 QA release
 package 2.0
 Bug #17792 	Patch: Regex bug in isIp
+   </notes>
+  </release>
+    <release>
+   <version>
+    <release>0.1.1</release>
+    <api>0.1.1</api>
+   </version>
+   <stability>
+    <release>devel</release>
+    <api>devel</api>
+   </stability>
+   <date>2012-01-10</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+   Updated code for PHP 5, fixed a few bugs. Added getter/setter methods for records and support for SRV and $GENERATE.
    </notes>
   </release>
  </changelog>
