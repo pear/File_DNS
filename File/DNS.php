@@ -35,60 +35,19 @@
 require_once 'PEAR.php';
 
 /**
+* require File_DNS_Exception
+*
+* This package depends on File_DNS_Exception to raise errors.
+*/
+require_once 'File/DNS/Exception.php';
+
+/**
  * require File
  *
  * File allows us to easily read
  * multiple different sort of sources.
  **/
 require_once 'File.php';
-
-// }}}
-// {{{ constants
-
-/**
- * Cannot open file.
- */
-define('FILE_DNS_FILE_READALL_FAILED',  -1);
-
-/**
- * Cannot save to file.
- */
-define('FILE_DNS_FILE_WRITE_FAILED',    -2);
-
-/**
- * SOA Parse Failed.
- */
-define('FILE_DNS_PARSE_SOA_FAILED',     -3);
-
-/**
- * RR Parse failed.
- */
-define('FILE_DNS_PARSE_RR_FAILED',      -4);
-
-/**
- * Parsing 1X to seconds failed.
- */
-define('FILE_DNS_PARSE_TIME_FAILED',    -5);
-
-/**
- * Parsing seconds to 1X failed.
- */
-define('FILE_DNS_PARSEBACK_TIME_FAILED', -6);
-
-/**
- * Can't render, zone not loaded yet.
- */
-define('FILE_DNS_RENDER_NOT_LOADED',    -7);
-
-/**
- * Can't set domain. Invalid Domain name.
- */
-define('FILE_DNS_INVALID_DOMAIN',       -8);
-
-/**
- * Can't update/set SOA
- */
-define('FILE_DNS_UPDATE_SOA_FAILED',    -9);
 
 // }}}
 // {{{ File_DNS
@@ -241,11 +200,11 @@ class File_DNS
     {
         $this->_domain = null;
         $this->_filename = null;
-        $this->_SOA = Array();
-        $this->_records = Array();
-        $this->_generate = Array();
+        $this->_SOA = array();
+        $this->_records = array();
+        $this->_generate = array();
         $this->_types = array(
-        'SOA', 'A', 'AAAA', 'NS', 'MX', 'CNAME', 'PTR', 'TXT', 'SRV'
+            'SOA', 'A', 'AAAA', 'NS', 'MX', 'CNAME', 'PTR', 'TXT', 'SRV'
         );
         $this->_isModified = false;
         $this->version = '@version@';  
@@ -275,28 +234,16 @@ class File_DNS
         if (PEAR::isError($zone)) {
             //File package doesn't have codes associated with errors,
             //so raise our own.
-            throw new Pear_Exception(
+            throw new PEAR_Exception(
                 'Unable to read file ' . $zonefile, FILE_DNS_FILE_READALL_FAILED
             );
         }
 
-        try
-        {
-            $ret = $this->setDomainName($domain);
-        } catch (Pear_Exception $e)
-        {
-            throw $e;
-        }
+        $ret = $this->setDomainName($domain);
 
         $this->_filename = $zonefile;
 
-        try
-        {
-            $parse = $this->_parseZone($zone);
-        } catch (Pear_Exception $e)
-        {
-            throw $e;
-        }
+        $parse = $this->_parseZone($zone);
 
         $this->_isModified = false;
         return $parse;
@@ -390,22 +337,10 @@ class File_DNS
                     break;
                 }
 
-                try
-                {
-                    $soa = $this->_parseSOA($line, $origin, $ttl);
-                    $soa = $this->setSOAValue($soa);
-                } catch (Pear_Exception $e)
-                {
-                    throw $e;
-                }
+                $soa = $this->_parseSOA($line, $origin, $ttl);
+                $soa = $this->setSOAValue($soa);
             } else {
-                try
-                {
-                    $rr = $this->_parseRR($line, $origin, $ttl, $current);
-                } catch (Pear_Exception $e)
-                {
-                    throw $e;
-                }
+                $rr = $this->_parseRR($line, $origin, $ttl, $current);
                 $current = $rr['name'];
                 $this->_records[] = $rr;
             }
@@ -435,7 +370,7 @@ class File_DNS
         $regexp = '/(.*) SOA (\S*) (\S*) (\S*) (\S*) (\S*) (\S*) (\S*)/i';
         preg_match($regexp, $line, $matches);
         if (sizeof($matches) != 9) {
-            throw new Pear_Exception(
+            throw new PEAR_Exception(
                 'Unable to parse SOA.', FILE_DNS_PARSE_SOA_FAILED
             );
         }
@@ -599,12 +534,7 @@ class File_DNS
      */
     public function toString($separator = "\n")
     {
-        try
-        {
-            $zone = $this->_generateZone();
-        } catch (PEAR_Exception $e) {
-            throw $e;
-        }
+        $zone = $this->_generateZone();
         $zone = implode($separator, $zone);
         return $zone;
     }
@@ -628,17 +558,13 @@ class File_DNS
     public function save(
         $filename = null, $separator = "\n", $lock = false, $zone = null
     ) {
+
         if (empty($filename)) {
             $filename = $this->_filename;
         }
 
         if (empty($zone)) {
-            try
-            {
-                $zone = $this->_generateZone();
-            } catch (PEAR_Exception $e) {
-                throw $e;
-            }
+            $zone = $this->_generateZone();
         }
 
         $zone = implode($separator, $zone);
@@ -1011,11 +937,11 @@ class File_DNS
         foreach ($this->_records as $key => $record) {
             if ((empty($name)
                 || (0 === strcasecmp($name, $record['name']))
-                || (0 == strcasecmp($name. $this->_domain . '.', $record['name'])))
+                || (0 === strcasecmp($name. $this->_domain . '.', $record['name'])))
                 && ((empty($type))
-                || (0 == strcasecmp($type, $record['type'])))
+                || (0 === strcasecmp($type, $record['type'])))
                 && ((empty($data))
-                || (0 == strcasecmp($data, $record['data'])))
+                || (0 === strcasecmp($data, $record['data'])))
             ) {
                 $this->_records[$key]['ttl'] = $new;
             }
@@ -1221,7 +1147,7 @@ class File_DNS
      * @static
      * @return int    time in seconds on success, PEAR error on failure.
      */
-    public static function parseToSeconds($time)
+    public function parseToSeconds($time)
     {
         if (is_numeric($time)) {
             //Already a number. Return.
@@ -1233,7 +1159,7 @@ class File_DNS
                 PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY
             );
             if (count($split) != 2) {
-                throw new PEAR_Exception(
+                throw new InvalidArgumentException(
                     "Unable to parse time. $time", FILE_DNS_PARSE_TIME_FAILED
                 );
             }
@@ -1279,7 +1205,7 @@ class File_DNS
      * @return string String with time on success, PEAR error on failure.
      *
      */
-    public static function parseFromSeconds($ttl)
+    public function parseFromSeconds($ttl)
     {
         $ttl = intval($ttl);
         if (!is_int($ttl)) {
@@ -1313,7 +1239,7 @@ class File_DNS
      * @return bool  true or false.
      *
      */
-    public static function isIP($value)
+    public function isIP($value)
     {
         // http://www.regular-expressions.info/regexbuddy/ipaccurate.html
         $ipaccurate = '/\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}'.
@@ -1331,7 +1257,7 @@ class File_DNS
      * @static
      * @access public
      */
-    public static function apiVersion()
+    public function apiVersion()
     {
         return '0.1.1';
     }
