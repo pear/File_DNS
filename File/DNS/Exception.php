@@ -24,11 +24,11 @@
 // {{{ requires
 
 /**
- * require PEAR
+ * require PEAR_Exception
  *
  * This package depends on PEAR to raise errors.
  */
-require_once 'PEAR.php';
+require_once 'PEAR/Exception.php';
 
 // {{{ constants
 
