@@ -8,7 +8,7 @@
     ],
     "autoload": {
         "psr-0": {
-            "File_DNS": "./"
+            "File": "./"
         }
     },
     "description": "More info available on: http://pear.php.net/package/File_DNS",
@@ -23,7 +23,8 @@
     },
     "type": "library",
     "require": {
-        "pear/pear_exception": "*"
+        "pear/pear_exception": "*",
+        "pear/file": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "*"
