@@ -1,0 +1,32 @@
+{
+    "authors": [
+        {
+            "email": "cipri@php.net",
+            "name": "Cipriano Groenendal",
+            "role": "Lead"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "File": "./"
+        }
+    },
+    "description": "More info available on: http://pear.php.net/package/File_DNS",
+    "include-path": [
+        "./"
+    ],
+    "license": "PHP License",
+    "name": "pear/file_dns",
+    "support": {
+        "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=File_DNS",
+        "source": "https://github.com/pear/File_DNS"
+    },
+    "type": "library",
+    "require": {
+        "pear/pear_exception": "*",
+        "pear/file": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    }
+}
